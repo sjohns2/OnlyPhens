@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+}
+
+@layer components {
+  
+  .navbar-icon {
+    @apply relative flex items-center justify-center 
+    h-12 w-12 mt-2 mb-2 mx-auto shadow-lg 
+    bg-lurple text-zinc-800
+    hover:bg-purple hover:text-white
+    rounded-3xl hover:rounded-xl
+    transition-all duration-300 ease-linear;
+  }
+
+  .navbar-tip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-16 rounded-md shadow-md
+    text-white bg-zinc-800 
+    text-xs font-bold 
+    transition-all duration-100 scale-0 origin-left;
+  }
+
+
+}

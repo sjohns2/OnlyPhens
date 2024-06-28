@@ -1,5 +1,6 @@
 import api from "../api"
-import EditNote from "../components/EditNote"
+import EditNote from "./EditNote"
+import Modal from "./ui/Modal"
 import { useState } from "react"
 
 function Note({ note }) {
@@ -21,8 +22,8 @@ function Note({ note }) {
     };
 
     return (
-    <>
-        <div className="border-1 rounded-10 shadow-lg p-20 m-10 text-center max-w-250px inline-block bg-cream">
+    <Modal>
+        <div className="border-1 rounded-10 shadow-lg p-20 m-10 text-center max-w-250px inline-block bg-cream" onClick={handleOpeningNote}>
             <p className="note-title">{note.title}</p>
             <p className="note-content">{note.content}</p>
             <p className="note-date">{formattedDate}</p>
@@ -35,7 +36,7 @@ function Note({ note }) {
             </button>
         </div>
         {editingNote && <EditNote isOpen={editingNote} noteId={note.id} onClose={() => setEditingNote(!editingNote)} />}
-    </>
+    </Modal>
     );
 }
 

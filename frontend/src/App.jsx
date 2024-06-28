@@ -6,7 +6,8 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import Profile from "./pages/Profile"
 import UserPage from "./pages/UserPage"
-import ProtectedRoute from "./components/ProtectedRoute.jsx"
+import ProtectedRoute from "./components/ProtectedRoute"
+import SideBar from "./components/SideBar"
 
 function Logout(){
   localStorage.clear()
@@ -22,22 +23,16 @@ function App() {
   return (
     <div className="flex">
       <Navbar />
-      <Routes className="flex-auto">
-        <Route 
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/profile" element={<Profile />}/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/userPage" element={<UserPage />}/>
         <Route path="/logout" element={<Logout />}/>
         <Route path="/register" element={<RegisterAndLogout />}/>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
+      <SideBar />
     </div>
   )
 }

@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      flexBasis: {
+        '1/20': '5%',
+        '9/20': '45%',
+      },
       dropShadow: {
         'left': '3px 10px 15px -3px rgba(107, 125, 255, 0.6)',
       },

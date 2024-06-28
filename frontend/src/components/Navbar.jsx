@@ -17,7 +17,7 @@ function Navbar() {
     }
 
     return (
-    <div className="top-0 left-0 pl-4 h-screen w-18 flex flex-col bg-cream shadow-lg">
+    <div className="basis-1/20 top-0 left-0 p-2 h-screen w-16 flex justify-center bg-cream shadow-lg">
         <div>
                 <Link to= "/" aria-label="Home"><NavButton icon={<FiHome size="28" />} title="Home"/></Link>
                 <Link to="/userPage" aria-label="Posts" title="Posts"><NavButton icon={<FaGlobeAmericas size="28" />} title="Posts"/></Link> 

@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import api from "../api";
+import Modal from "./ui/Modal";
 
-function CreateNote ({ isOpen, onClose})  {
+function CreateNote ({ isOpen, onClose })  {
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
 
@@ -16,17 +17,12 @@ function CreateNote ({ isOpen, onClose})  {
             })
             .catch((err) => alert(err));
     };
-
-    const handleOutsideClick = () => {
-        onClose();
-    }
     
     if (!isOpen) return null
 
     return(
-        <>
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70" onClick={handleOutsideClick}/>
-            <div className="fixed top-1/2 left-1/2 translate-y-1/2 translate-x-1/2 p-50 bg-cream">
+        <Modal isOpen={isOpen} onClose={onClose}>
+            <div>
                 <h2>Create a Note</h2>
                     <form onSubmit={createNote}>
                         <label htmlFor="title">Title:</label>
@@ -53,7 +49,7 @@ function CreateNote ({ isOpen, onClose})  {
                         <input type="submit" value="Submit"></input>
                     </form>
             </div>
-        </>
+        </Modal>
     );
 }
 

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import api from "../api";
+import Modal from "./ui/Modal"
 
 function EditNote ({ isOpen, noteId, onClose})  {
     const [content, setContent] = useState("");
@@ -23,7 +24,6 @@ function EditNote ({ isOpen, noteId, onClose})  {
 
     const updateNote = (e) => {
         e.preventDefault();
-        onClose();
         api
             .put(`/api/notes/${noteId}`, { content, title })
             .then((res) => { 
@@ -31,19 +31,15 @@ function EditNote ({ isOpen, noteId, onClose})  {
                 else alert("Failed to update note.");
             })
             .catch((err) => alert(err));
-    };
-
-    const handleOutsideClick = () => {
         onClose();
-    }
+    };
     
     if (!isOpen) return null
 
     return(
-        <>
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70" onClick={handleOutsideClick}/>
-            <div className="fixed top-1/2 left-1/2 translate-y-1/2 translate-x-1/2 p-50 bg-cream">
-                <h2>Create a Note</h2>
+        <Modal isOpen={isOpen} noteId={noteId} onClose={onClose}>
+            <div>
+                <h2>Edit a Note</h2>
                     <form onSubmit={updateNote}>
                         <label htmlFor="title">Title:</label>
                         <br />
@@ -69,7 +65,7 @@ function EditNote ({ isOpen, noteId, onClose})  {
                         <input type="submit" value="Submit"></input>
                     </form>
             </div>
-        </>
+        </Modal>
     );
 }
 

@@ -20,12 +20,12 @@ function Home() {
     };
 
     return (
-    <div className="bg-cream flex-auto pl-20"> 
+        <div className="bg-cream flex-auto pl-20"> 
         <h1 className="text-2xl pt-6 pl-10 underline decoration-zinc-800 decoration-2"><span className="text-lavender">Only</span><span className="text-purple">Phens</span></h1>
         {notes.map((note) => (
             <Note note={note} key={note.id} />
-    ))}
-</div>
+        ))}
+        </div>
 );}
 
 export default Home
